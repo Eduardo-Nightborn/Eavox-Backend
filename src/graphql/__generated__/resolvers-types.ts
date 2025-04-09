@@ -99,7 +99,7 @@ export type MutationStopImpersonatingUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
- /// me: Me;
+  /// me: Me;
   //user: User;
   users: Array<User>;
 };

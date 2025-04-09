@@ -21,7 +21,7 @@ export const contextMiddleware =
     let authHeader = req.headers.authorization;
     if (authHeader) {
       authHeader = authHeader.replace(/^bearer /gim, '');
-     // auth = await gateways.iam.getAuthAndValidateToken(authHeader);
+      // auth = await gateways.iam.getAuthAndValidateToken(authHeader);
     }
 
     const context: AppContext = {

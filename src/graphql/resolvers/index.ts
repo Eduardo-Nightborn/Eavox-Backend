@@ -3,7 +3,6 @@ import { Resolvers } from '../__generated__/resolvers-types';
 import { initScalars } from './scalars';
 
 export const initResolvers = (usecases: Usecases): Resolvers => {
- 
   /* ... Example
   const {
     Query: ExampleQueries,
@@ -22,6 +21,5 @@ export const initResolvers = (usecases: Usecases): Resolvers => {
     ...exampleResolvers,
   };
   */
-return {}
-
+  return {};
 };

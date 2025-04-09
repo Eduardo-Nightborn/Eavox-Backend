@@ -1,9 +1,6 @@
-
-
 export const initUsecases = () => {
   return {
     // example: initExampleUsecases(),
-    
   };
 };
 
