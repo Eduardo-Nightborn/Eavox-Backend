@@ -1,7 +1,7 @@
 {
-  "name": "back-end-starter",
+  "name": "back-end-eavox",
   "version": "1.0.0",
-  "description": "A starter project for nodejs back-end at Nightborn",
+  "description": "Back End for the eavox project",
   "author": "Nightborn",
   "license": "MIT",
   "main": "src/index.ts",
