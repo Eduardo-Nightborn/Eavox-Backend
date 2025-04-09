@@ -1,6 +1,5 @@
 import { Kysely, sql } from 'kysely';
 
-
 export async function up(db: Kysely<any>): Promise<void> {
   //table USERS
   await db.schema
@@ -155,78 +154,78 @@ export async function up(db: Kysely<any>): Promise<void> {
     .execute();
 }
 export async function down(db: Kysely<any>): Promise<void> {
-    // First drop the foreign key constraints before dropping tables
-    try {
-      // Drop constraints from votes table
-      await db.schema
-        .alterTable('votes')
-        .dropConstraint('fk_votes_voting_session_id_voting_sessions')
-        .execute();
-      
-      await db.schema
-        .alterTable('votes')
-        .dropConstraint('fk_votes_user_id_users')
-        .execute();
-  
-      // Drop constraints from voting_sessions table
-      await db.schema
-        .alterTable('voting_sessions')
-        .dropConstraint('fk_voting_sessions_started_by_users')
-        .execute();
-      
-      await db.schema
-        .alterTable('voting_sessions')
-        .dropConstraint('fk_voting_sessions_team_id_teams')
-        .execute();
-      
-      // Drop constraints from match_users table
-      await db.schema
-        .alterTable('match_users')
-        .dropConstraint('fk_match_users_user_id_users')
-        .execute();
-      
-      await db.schema
-        .alterTable('match_users')
-        .dropConstraint('fk_match_users_match_id_matches')
-        .execute();
-      
-      // Drop constraints from matches table
-      await db.schema
-        .alterTable('matches')
-        .dropConstraint('fk_matches_created_by_users')
-        .execute();
-      
-      await db.schema
-        .alterTable('matches')
-        .dropConstraint('fk_matches_team_id_teams')
-        .execute();
-      
-      await db.schema
-        .alterTable('matches')
-        .dropConstraint('fk_matches_team2_id_teams')
-        .execute();
-  
-      // Drop constraint from users table
-      await db.schema
-        .alterTable('users')
-        .dropConstraint('fk_users_team_id_teams')
-        .execute();
-      
-      // Drop constraint from teams table
-      await db.schema
-        .alterTable('teams')
-        .dropConstraint('fk_teams_created_by_users')
-        .execute();
-  
-      // Now drop tables in the correct order
-      await db.schema.dropTable('votes').execute();
-      await db.schema.dropTable('voting_sessions').execute();
-      await db.schema.dropTable('match_users').execute();
-      await db.schema.dropTable('matches').execute();
-      await db.schema.dropTable('users').execute();
-      await db.schema.dropTable('teams').execute();
-    } catch (error) {
-      console.error('Error in migration down:', error);
-      throw error;
-    }
+  // First drop the foreign key constraints before dropping tables
+  try {
+    // Drop constraints from votes table
+    await db.schema
+      .alterTable('votes')
+      .dropConstraint('fk_votes_voting_session_id_voting_sessions')
+      .execute();
+
+    await db.schema
+      .alterTable('votes')
+      .dropConstraint('fk_votes_user_id_users')
+      .execute();
+
+    // Drop constraints from voting_sessions table
+    await db.schema
+      .alterTable('voting_sessions')
+      .dropConstraint('fk_voting_sessions_started_by_users')
+      .execute();
+
+    await db.schema
+      .alterTable('voting_sessions')
+      .dropConstraint('fk_voting_sessions_team_id_teams')
+      .execute();
+
+    // Drop constraints from match_users table
+    await db.schema
+      .alterTable('match_users')
+      .dropConstraint('fk_match_users_user_id_users')
+      .execute();
+
+    await db.schema
+      .alterTable('match_users')
+      .dropConstraint('fk_match_users_match_id_matches')
+      .execute();
+
+    // Drop constraints from matches table
+    await db.schema
+      .alterTable('matches')
+      .dropConstraint('fk_matches_created_by_users')
+      .execute();
+
+    await db.schema
+      .alterTable('matches')
+      .dropConstraint('fk_matches_team_id_teams')
+      .execute();
+
+    await db.schema
+      .alterTable('matches')
+      .dropConstraint('fk_matches_team2_id_teams')
+      .execute();
+
+    // Drop constraint from users table
+    await db.schema
+      .alterTable('users')
+      .dropConstraint('fk_users_team_id_teams')
+      .execute();
+
+    // Drop constraint from teams table
+    await db.schema
+      .alterTable('teams')
+      .dropConstraint('fk_teams_created_by_users')
+      .execute();
+
+    // Now drop tables in the correct order
+    await db.schema.dropTable('votes').execute();
+    await db.schema.dropTable('voting_sessions').execute();
+    await db.schema.dropTable('match_users').execute();
+    await db.schema.dropTable('matches').execute();
+    await db.schema.dropTable('users').execute();
+    await db.schema.dropTable('teams').execute();
+  } catch (error) {
+    console.error('Error in migration down:', error);
+    throw error;
   }
+}
