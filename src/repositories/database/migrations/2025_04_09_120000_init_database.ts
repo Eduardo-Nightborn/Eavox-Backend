@@ -116,6 +116,12 @@ export async function up(db: Kysely<any>): Promise<void> {
       col.notNull().defaultTo(sql`now()`),
     )
     .addColumn('deleted_at', 'timestamp')
+    .addUniqueConstraint('votes_unique_constraint', [
+      'user_id',
+      'voting_session_id',
+      'type',
+      'deleted_at',
+    ])
     .execute();
 }
 export async function down(db: Kysely<any>): Promise<void> {
