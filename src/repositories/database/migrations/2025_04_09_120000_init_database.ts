@@ -69,6 +69,13 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('match_id', 'uuid', (col) =>
       col.notNull().references('matches.id'),
     )
+    .addColumn('created_at', 'timestamp', (col) =>
+      col.notNull().defaultTo(sql`now()`),
+    )
+    .addColumn('updated_at', 'timestamp', (col) =>
+      col.notNull().defaultTo(sql`now()`),
+    )
+    .addColumn('deleted_at', 'timestamp')
     .execute();
 
   //TABLE VOTING_SESSIONS
