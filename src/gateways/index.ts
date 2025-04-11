@@ -1,8 +1,9 @@
 import { Config } from '../libs/config';
+import { initIAMGateway } from './iam';
 
 export const initGateways = (config: Config) => {
   return {
-    // example: initExampleGateway(config),
+    iam: initIAMGateway(config),
   };
 };
 

@@ -2,7 +2,7 @@ import { Kysely } from 'kysely';
 import { Usecases, initUsecases } from '../../../usecases';
 import { DB } from '../../../repositories/database/models';
 import { AppContext, AuthContext } from '../../context';
-//import { initGatewaysMock } from '../../../gateways/mocks';
+import { initGatewaysMock } from '../../../gateways/mocks';
 import { initRepositories } from '../../../repositories';
 import { Config } from '../../config';
 import { PostgreSqlContainer } from '@testcontainers/postgresql';
@@ -54,7 +54,7 @@ function setupContext(
 ): AppContext {
   return {
     config,
-    gateways: {},
+    gateways: initGatewaysMock(),
     repositories: initRepositories(db),
     logger: console as any,
     auth,

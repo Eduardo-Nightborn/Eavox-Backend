@@ -1,6 +1,5 @@
 export type CreateUserInput = {
+  displayName: string;
   email: string;
-  firstName: string;
-  lastName: string;
   password: string;
 };

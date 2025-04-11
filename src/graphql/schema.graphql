@@ -3,61 +3,26 @@ scalar DateTime
 
 type User {
   id: ID!
+  displayName: String!
+  email: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  email: Email!
-  firstName: String!
-  lastName: String!
+  deletedAt:DateTime
+  externalId: ID!
+  teamId:ID
 }
 
-type Me {
-  id: ID!
-  email: Email!
-  firstName: String!
-  lastName: String!
-}
-
-type AuthTokens {
+type AuthPayload {
   accessToken: String!
   refreshToken: String!
-  expiredAt: DateTime!
-}
-
-input CreateUserInput {
-  email: Email!
-  password: String!
-  firstName: String!
-  lastName: String!
-}
-
-input SignInInput {
-  email: Email!
-  password: String!
-}
-
-input RefreshTokenInput {
-  refreshToken: String!
-}
-
-input ImpersonateUserInput {
-  userId: ID!
-  refreshToken: String!
-}
-
-input StopImpersonatingUserInput {
-  refreshToken: String!
+  user: User!
 }
 
 type Query {
   users: [User!]!
-  user(id: ID!): User!
-  me: Me!
+
 }
 
 type Mutation {
-  createUser(input: CreateUserInput!): User!
-  signIn(input: SignInInput!): AuthTokens!
-  refreshToken(input: RefreshTokenInput!): AuthTokens!
-  impersonateUser(input: ImpersonateUserInput!): AuthTokens!
-  stopImpersonatingUser(input: StopImpersonatingUserInput!): AuthTokens!
+  createUser(email: String!, password: String!, displayName: String!): AuthPayload!
 }
