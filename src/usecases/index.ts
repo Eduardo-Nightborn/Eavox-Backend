@@ -1,6 +1,8 @@
+import { initUserUsecases } from './user';
+
 export const initUsecases = () => {
   return {
-    // example: initExampleUsecases(),
+    user: initUserUsecases(),
   };
 };
 

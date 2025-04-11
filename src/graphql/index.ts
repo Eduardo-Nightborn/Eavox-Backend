@@ -63,7 +63,7 @@ export const initGraphQL = async (
         let authHeader = req.headers.authorization;
         if (authHeader && operationName !== 'IntrospectionQuery') {
           authHeader = authHeader.replace(/^bearer /gim, '');
-          // auth = await gateways.iam.getAuthAndValidateToken(authHeader);
+          auth = await gateways.iam.getAuthAndValidateToken(authHeader);
         }
 
         return {

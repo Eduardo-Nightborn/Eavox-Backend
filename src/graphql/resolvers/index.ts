@@ -1,25 +1,23 @@
 import { Usecases } from '../../usecases';
 import { Resolvers } from '../__generated__/resolvers-types';
 import { initScalars } from './scalars';
+import { initUserModuleResolvers } from './user';
 
 export const initResolvers = (usecases: Usecases): Resolvers => {
-  /* ... Example
   const {
-    Query: ExampleQueries,
-    Mutation: ExampleMutations,
-    ...ExampleResolvers
-  } = initExampleModuleResolvers(usecases);
+    Query: userQueries,
+    Mutation: userMutations,
+    ...userResolvers
+  } = initUserModuleResolvers(usecases);
 
   return {
     ...initScalars(),
     Query: {
-      ...exampleQueries,
+      ...userQueries,
     },
     Mutation: {
-      ...exampleMutations,
+      ...userMutations,
     },
-    ...exampleResolvers,
+    ...userResolvers,
   };
-  */
-  return {};
 };

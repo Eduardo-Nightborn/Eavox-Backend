@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { fa, faker } from '@faker-js/faker';
 import { Insertable, Selectable, Updateable } from 'kysely';
 import { Users } from '../../models';
 
@@ -11,9 +11,8 @@ export const dbUserFixtures = {
       deleted_at: null,
       external_id: faker.string.uuid(),
       email: faker.internet.email(),
-      first_name: faker.person.firstName(),
-      last_name: faker.person.lastName(),
-      is_admin: false,
+      display_name: faker.person.firstName(),
+      team_id: null,
       ...user,
     };
   },
@@ -22,9 +21,8 @@ export const dbUserFixtures = {
       id: faker.string.uuid(),
       external_id: faker.string.uuid(),
       email: faker.internet.email(),
-      first_name: faker.person.firstName(),
-      last_name: faker.person.lastName(),
-      is_admin: false,
+      display_name: faker.person.firstName(),
+      team_id: faker.string.uuid(),
       ...user,
     };
   },
@@ -34,10 +32,8 @@ export const dbUserFixtures = {
       updated_at: new Date(),
       external_id: faker.string.uuid(),
       email: faker.internet.email(),
-      first_name: faker.person.firstName(),
-      last_name: faker.person.lastName(),
-      is_admin: false,
-      ...user,
+      display_name: faker.person.firstName(),
+      team_id: faker.string.uuid(),
     };
   },
 };

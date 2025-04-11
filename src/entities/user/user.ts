@@ -1,11 +1,22 @@
 export type UserEntity = {
   id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date | null;
+  displayName: string;
   email: string;
-  firstName: string;
-  lastName: string;
-  isAdmin: boolean;
   externalId: string;
+  createdAt: Date | null;
+  updatedAt: Date | null;
+  deletedAt: Date | null;
+  teamId: string | null;
+};
+
+export type UserInput = {
+  displayName: string;
+  email: string;
+  password: string;
+};
+
+export type AuthPayload = {
+  user: UserEntity;
+  refreshToken: string;
+  accessToken: string;
 };
