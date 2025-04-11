@@ -62,7 +62,11 @@ export type MutationCreateUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  users: Array<User>;
+  validateUserEmail: Scalars['Boolean']['output'];
+};
+
+export type QueryValidateUserEmailArgs = {
+  email: Scalars['String']['input'];
 };
 
 export type User = {
@@ -254,7 +258,12 @@ export type QueryResolvers<
   ParentType extends
     ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = ResolversObject<{
-  users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
+  validateUserEmail?: Resolver<
+    ResolversTypes['Boolean'],
+    ParentType,
+    ContextType,
+    RequireFields<QueryValidateUserEmailArgs, 'email'>
+  >;
 }>;
 
 export type UserResolvers<

@@ -251,7 +251,7 @@ export const initIAMGateway = (config: Config) => {
       }
     }
   };
- 
+
   return {
     createUser,
     signIn,
