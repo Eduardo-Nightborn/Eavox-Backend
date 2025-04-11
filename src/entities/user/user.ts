@@ -8,3 +8,15 @@ export type UserEntity = {
   deletedAt: Date | null;
   teamId: string | null;
 };
+
+export type UserInput = {
+  displayName: string;
+  email: string;
+  password: string;
+};
+
+export type AuthPayload = {
+  user: UserEntity;
+  refreshToken: string;
+  accessToken: string;
+};

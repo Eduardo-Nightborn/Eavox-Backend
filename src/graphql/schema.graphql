@@ -19,8 +19,7 @@ type AuthPayload {
 }
 
 type Query {
-  users: [User!]!
-
+  validateUserEmail(email:String!): Boolean!
 }
 
 type Mutation {

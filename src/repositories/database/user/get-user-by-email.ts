@@ -11,7 +11,6 @@ export function initGetUserByEmailRepository(db: Kysely<DB>) {
       .where('users.deleted_at', 'is', null)
       .where('users.email', '=', email)
       .executeTakeFirst();
-
     return user ? toUserEntity(user) : null;
   };
 }
