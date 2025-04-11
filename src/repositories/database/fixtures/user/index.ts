@@ -12,7 +12,7 @@ export const dbUserFixtures = {
       external_id: faker.string.uuid(),
       email: faker.internet.email(),
       display_name: faker.person.firstName(),
-      team_id: null,
+      team_id: faker.string.uuid(),
       ...user,
     };
   },
@@ -34,6 +34,7 @@ export const dbUserFixtures = {
       email: faker.internet.email(),
       display_name: faker.person.firstName(),
       team_id: faker.string.uuid(),
+      ...user,
     };
   },
 };
