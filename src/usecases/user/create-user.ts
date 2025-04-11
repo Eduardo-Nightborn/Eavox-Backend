@@ -1,4 +1,6 @@
-import { AuthPayload, UserEntity, UserInput } from '../../entities/user/user';
+import { UserEntity } from '../../entities/user/user';
+import { AuthPayload } from '../../entities/user/auth-payload';
+import { UserInput } from '../../entities/user/user-input';
 import { AppContext } from '../../libs/context';
 import Joi from 'joi';
 import { BadUserInputError } from '../../entities/errors/bad-user-input-error';
@@ -20,7 +22,7 @@ export const createUser = async (
     input.password,
     input.displayName,
   );
-  const tokens = await ctx.gateways.iam.getTokensByEmail(
+  const tokens = await ctx.gateways.iam.signIn(
     input.email,
     input.password,
   );

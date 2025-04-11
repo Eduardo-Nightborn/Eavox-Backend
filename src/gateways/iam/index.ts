@@ -252,41 +252,6 @@ export const initIAMGateway = (config: Config) => {
     }
   };
 
-  const getTokensByEmail = async (
-    email: string,
-    password: string,
-  ): Promise<AuthTokensEntity> => {
-    try {
-      const auth = clientAuth.getAuth(clientApp);
-
-      const { user } = await clientAuth.signInWithEmailAndPassword(
-        auth,
-        email,
-        password,
-      );
-
-      if (!user.emailVerified) {
-        throw new BadRequestError('Email not verified', { email });
-      }
-
-      const { token, expirationTime } = await user.getIdTokenResult();
-
-      return {
-        accessToken: token,
-        refreshToken: user.refreshToken,
-        expiredAt: new Date(expirationTime),
-      };
-    } catch (err: any) {
-      if (err.code === 'auth/user-not-found') {
-        throw new NotFoundError('User not found', { email }, err.stack);
-      }
-      if (err.code === 'auth/wrong-password') {
-        throw new BadRequestError('Wrong password', { email }, err.stack);
-      }
-      throw new UnknownError(err.message, { email }, err.stack);
-    }
-  };
-
   return {
     createUser,
     signIn,
@@ -294,7 +259,6 @@ export const initIAMGateway = (config: Config) => {
     refreshToken: _refreshToken,
     impersonateUser,
     stopImpersonatingUser,
-    getTokensByEmail,
   };
 };
 
