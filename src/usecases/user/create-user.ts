@@ -1,6 +1,6 @@
 import { UserEntity } from '../../entities/user/user';
 import { AuthPayload } from '../../entities/user/auth-payload';
-import { UserInput } from '../../entities/user/user-input';
+import { CreateUserInput } from '../../entities/user/create-user-input';
 import { AppContext } from '../../libs/context';
 import Joi from 'joi';
 import { BadUserInputError } from '../../entities/errors/bad-user-input-error';
@@ -8,7 +8,7 @@ import { BadRequestError } from '../../entities/errors/bad-request-error';
 
 export const createUser = async (
   ctx: AppContext,
-  input: UserInput,
+  input: CreateUserInput,
 ): Promise<AuthPayload> => {
   validateInput(input);
 
@@ -37,8 +37,8 @@ export const createUser = async (
   };
 };
 
-function validateInput(input: UserInput) {
-  const schema = Joi.object<UserInput>({
+function validateInput(input: CreateUserInput) {
+  const schema = Joi.object<CreateUserInput>({
     displayName: Joi.string().required().not().empty(),
     email: Joi.string().email().required().not().empty(),
     password: Joi.string().required().not().empty().min(6),
