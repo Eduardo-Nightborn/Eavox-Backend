@@ -19,17 +19,11 @@ export const initUserMutationResolvers = (
     ): Promise<
       Omit<AuthPayload, 'user'> & { user: ResolverTypeWrapper<UserEntity> }
     > => {
-      const result = await usecases.user.create(context, {
+      return await usecases.user.create(context, {
         email: args.email,
         displayName: args.displayName,
         password: args.password,
       });
-
-      return {
-        user: result.user as ResolverTypeWrapper<UserEntity>,
-        refreshToken: result.refreshToken,
-        accessToken: result.accessToken,
-      };
     },
   };
 };

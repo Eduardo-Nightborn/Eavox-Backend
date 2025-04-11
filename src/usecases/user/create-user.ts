@@ -22,10 +22,7 @@ export const createUser = async (
     input.password,
     input.displayName,
   );
-  const tokens = await ctx.gateways.iam.signIn(
-    input.email,
-    input.password,
-  );
+  const tokens = await ctx.gateways.iam.signIn(input.email, input.password);
 
   const newUser = await ctx.repositories.user.create(
     input.email,

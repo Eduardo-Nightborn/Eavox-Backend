@@ -1,8 +1,7 @@
-import { UserEntity } from "./user";
+import { UserEntity } from './user';
 
 export type AuthPayload = {
-    user: UserEntity;
-    refreshToken: string;
-    accessToken: string;
-  };
-  
+  user: UserEntity;
+  refreshToken: string;
+  accessToken: string;
+};

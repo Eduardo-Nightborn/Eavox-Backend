@@ -9,10 +9,5 @@ export const initIAMGatewayMock = (): IAMGateway => {
     stopImpersonatingUser: jest.fn(),
     refreshToken: jest.fn(),
     signIn: jest.fn(),
-    getTokensByEmail: jest.fn().mockResolvedValue({
-      accessToken: faker.string.uuid(),
-      refreshToken: faker.string.uuid(),
-      expiredAt: new Date(),
-    }),
   };
 };
